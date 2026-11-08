@@ -1,0 +1,14 @@
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:v2.63.23
+    container_name: filebrowser
+    environment:
+      - PUID=1000 #"id $user" to find your uid & gid values
+      - PGID=1000
+    volumes:
+      - ./admin/data:/srv
+      - ./admin/database:/database
+      - ./admin/config:/config
+    ports:
+      - 8000:80
+    restart: unless-stopped
